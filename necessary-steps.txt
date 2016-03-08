@@ -1,0 +1,27 @@
+1. Edit the service: sudo vi /lib/systemd/system/radicaledad.service
+
+2. Load the service: sudo systemctl daemon-reload
+	- this allows you to start the service in the current session by:
+          sudo systemctl start radicaledad
+
+3. Enable the service: sudo systemctl enable radicaledad.service
+	- this sets to service to run at boot time 
+
+4. you can check the status by:
+	$ systemctl status radicaledad
+	● radicaledad.service - Job to start the radicale daemon
+	   Loaded: loaded (/lib/systemd/system/radicaledad.service; enabled; vendor preset: enabled)
+	   Active: active (running) since Tue 2016-03-08 16:44:10 GMT; 26min ago
+	  Process: 734 ExecStart=/usr/bin/radicale -d (code=exited, status=0/SUCCESS)
+	 Main PID: 797 (radicale)
+	   CGroup: /system.slice/radicaledad.service
+		   └─797 /usr/bin/python /usr/bin/radicale -d
+
+	Mar 08 16:44:08 ubuntu systemd[1]: Starting Job to start the radicale daemon...
+	Mar 08 16:44:10 ubuntu systemd[1]: Started Job to start the radicale daemon.
+
+5. You can stop the service in the current session by:
+          sudo systemctl stop radicaledad
+
+6. You can prevent the service from automatically starting at boot by:
+	sudo systemctl disable radicaledad.service
