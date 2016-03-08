@@ -1,0 +1,15 @@
+# Dad's version of start radicale as a daemon (from scratch)
+
+[Unit]
+Description=Job to start the radicale daemon
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/radicale -d
+ExecStop=/usr/bin/pkill radicale
+Type=forking
+RemainAfterExit=no
+
+
